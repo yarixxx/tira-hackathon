@@ -22,13 +22,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
-
     <iron-ajax
         auto
         url="https://my-project-intuit.appspot.com/classes_list"
@@ -36,10 +29,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         on-response="handleResponse"></iron-ajax>
 
     <template is="dom-repeat" items="{{responce.classes_list}}">
-
       <div class="card">
         <h1>{{item.title}}</h1>
         <p>{{item.description}}</p>
+        <a name="owner-details-view" href="[[rootPath]]owner-details-view">Owner Details view</a>
       </div>
     </template>
   </template>
