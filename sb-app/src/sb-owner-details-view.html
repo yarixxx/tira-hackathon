@@ -12,6 +12,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTm_zMPw1hiTxZpp74n588lm0wQh2P5EE&libraries=places"></script>
+
 <dom-module id="sb-owner-details-view">
   <template>
     <style include="shared-styles">
@@ -47,17 +49,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
       <div class="row">
         <div class="left-column">Location</div>
-        <div class="right-column">maps here</div>
+        <div class="right-column">
+          <google-map/>
+          <template is="dom-bind">
+            <google-map-search map="[[map]]" query="Pizza" results="{{results}}">
+            </google-map-search>
+            <google-map map="{{map}}" latitude="37.779"
+                        longitude="-122.3892">
+              <template is="dom-repeat" items="{{results}}" as="marker">
+                <google-map-marker latitude="{{marker.latitude}}"
+                                   longitude="{{marker.longitude}}">
+                  <h2>{{marker.name}}</h2>
+                  <span>{{marker.formatted_address}}</span>
+                </google-map-marker>
+              </template>
+            </google-map>
+          </template>          
+
+        </div>
       </div>
       <div class="row">
         <div class="left-column">Price</div>
         <div class="right-column">$10</div>
       </div>
-      <div>
-        <div class="circle">SO</div>
-        <div class="circle">IK</div>
-        <div class="circle">SM</div>
-        <div class="circle">IL</div>
+      <div class="row"> 
+        <div class="left-column">Attenders:</div>
+        <div class="right-column">
+          <div class="circle">SO</div>
+          <div class="circle">IK</div>
+          <div class="circle">SM</div>
+          <div class="circle">IL</div>
+        </div>
       </div>  
     </div>
 
