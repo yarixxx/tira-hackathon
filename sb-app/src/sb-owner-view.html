@@ -22,31 +22,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <p>
-        <a name="owner-details-view" href="[[rootPath]]owner-details-view">Owner Details view</a>
-      </p>
-    </div>
-
     <iron-ajax
         auto
-        url="https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
-        params='{"part":"snippet", "q":"polymer", "key": "YOUTUBE_API_KEY", "type": "video"}'
+        url="https://my-project-intuit.appspot.com/classes_list"
         handle-as="json"
-        on-response="handleResponse"
-        debounce-duration="300"></iron-ajax>
+        on-response="handleResponse"></iron-ajax>
+
+    <template is="dom-repeat" items="{{responce.classes_list}}">
+      <div class="card">
+        <h1>{{item.title}}</h1>
+        <p>{{item.description}}</p>
+        <a name="owner-details-view" href="[[rootPath]]owner-details-view">Owner Details view</a>
+      </div>
+    </template>
   </template>
 
   <script>
     class OwnerView extends Polymer.Element {
       static get is() { return 'sb-owner-view'; }
 
-      handleResponse(resp) {
-        console.log(resp);
+      static get properties() {
+        return {
+          responce: Object
+        };
+      }
+
+      handleResponse(data) {
+        this.responce = data.detail.response;
       }
     }
 
