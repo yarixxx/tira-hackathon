@@ -1,0 +1,84 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="sb-owner-details-view">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      .left-column {
+        min-width: 100px;
+        margin: 5px;
+      }
+      .right-column {
+        margin: 5px;
+      }
+      .card .row {
+        display: flex;
+      }
+    </style>
+
+    <div class="card">
+      <div class="row">
+        <div><h1 style="margin: 5px;">Class Details</h1></div>
+        <div style="margin: 5px;margin-left: auto;">edit here</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Title</div>
+        <div class="right-column">Yoga class</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Description</div>
+        <div class="right-column">Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Location</div>
+        <div class="right-column">maps here</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Price</div>
+        <div class="right-column">$10</div>
+      </div>
+      <div>
+        <div class="circle">SO</div>
+        <div class="circle">IK</div>
+        <div class="circle">SM</div>
+        <div class="circle">IL</div>
+      </div>  
+    </div>
+
+    <iron-ajax
+        auto
+        url="https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
+        params='{"part":"snippet", "q":"polymer", "key": "YOUTUBE_API_KEY", "type": "video"}'
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="300"></iron-ajax>
+  </template>
+
+  <script>
+    class OwnerDetailsView extends Polymer.Element {
+      static get is() { return 'sb-owner-details-view'; }
+
+      handleResponse(resp) {
+        console.log(resp);
+      }
+    }
+
+    window.customElements.define(OwnerDetailsView.is, OwnerDetailsView);
+  </script>
+</dom-module>
