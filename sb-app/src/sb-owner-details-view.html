@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="sb-owner-view">
+<dom-module id="sb-owner-details-view">
   <template>
     <style include="shared-styles">
       :host {
@@ -20,16 +20,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      .left-column {
+        min-width: 100px;
+        margin: 5px;
+      }
+      .right-column {
+        margin: 5px;
+      }
+      .card .row {
+        display: flex;
+      }
     </style>
 
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <p>
-        <a name="owner-details-view" href="[[rootPath]]owner-details-view">Owner Details view</a>
-      </p>
+      <div class="row">
+        <div><h1 style="margin: 5px;">Class Details</h1></div>
+        <div style="margin: 5px;margin-left: auto;">edit here</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Title</div>
+        <div class="right-column">Yoga class</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Description</div>
+        <div class="right-column">Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Location</div>
+        <div class="right-column">maps here</div>
+      </div>
+      <div class="row">
+        <div class="left-column">Price</div>
+        <div class="right-column">$10</div>
+      </div>
+      <div>
+        <div class="circle">SO</div>
+        <div class="circle">IK</div>
+        <div class="circle">SM</div>
+        <div class="circle">IL</div>
+      </div>  
     </div>
 
     <iron-ajax
@@ -42,14 +71,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class OwnerView extends Polymer.Element {
-      static get is() { return 'sb-owner-view'; }
+    class OwnerDetailsView extends Polymer.Element {
+      static get is() { return 'sb-owner-details-view'; }
 
       handleResponse(resp) {
         console.log(resp);
       }
     }
 
-    window.customElements.define(OwnerView.is, OwnerView);
+    window.customElements.define(OwnerDetailsView.is, OwnerDetailsView);
   </script>
 </dom-module>

@@ -3,6 +3,7 @@
   "shell": "src/sb-app.html",
   "fragments": [
     "src/sb-owner-view.html",
+    "src/sb-owner-details-view.html",
     "src/sb-customer-view.html",
     "src/sb-view404.html"
   ],
