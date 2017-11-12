@@ -1,5 +1,5 @@
 ﻿// Set the application ID
-var applicationId = "sq0idp-mVWOF7sFV3YHWuqq8vzrPQ";
+var applicationId = "sandbox-sq0atb-N029EAUMZ71rrNldaxAfzg";
 
 // Set the location ID
 var locationId = "CBASELJ7JmsxfWZDDp9GA7NlAEggAQ";
