@@ -24,7 +24,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
-
+    <paper-tabs selected="0">
+      <paper-tab>TAB 1</paper-tab>
+      <paper-tab>TAB 2</paper-tab>
+      <paper-tab>TAB 3</paper-tab>
+    </paper-tabs>
     <h3>Send notification to participants</h3>
     <paper-textarea label="Message" value="{{message}}"></paper-textarea>
     <paper-button raised on-tap="sendNotification">send</paper-button>
@@ -37,8 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         content-type="application/x-www-form-urlencoded"
         on-error="_handleAjaxPostError"></iron-ajax>
   </template>
-  <!--content-type="application/json"-->
-  <!--handle-as="json"-->
+
   <script>
     class NotificationView extends Polymer.Element {
       static get is() { return 'sb-notification-view'; }
