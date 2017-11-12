@@ -188,7 +188,7 @@ class LastPayments(webapp2.RequestHandler):
 class Pay(webapp2.RequestHandler):
 
     def post(self):
-        self.response.headers['Content-Type'] = 'application/json'
+        self.response.headers['Content-Type'] = 'text/html'
         self.response.headers['Access-Control-Allow-Origin'] = '*'
         nonce = self.request.POST.get('nonce', None)
         if nonce:
