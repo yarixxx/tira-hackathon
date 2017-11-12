@@ -1,5 +1,5 @@
 ﻿// Set the application ID
-var applicationId = "sandbox-sq0atb-N029EAUMZ71rrNldaxAfzg";
+var applicationId = "sandbox-sq0idp-yvvRgypTDbzqkLSsShdn6g";
 
 // Set the location ID
 var locationId = "CBASELJ7JmsxfWZDDp9GA7NlAEggAQ";
@@ -78,16 +78,16 @@ var paymentForm = new SqPaymentForm({
 
       // Only show the button if Apple Pay for Web is enabled
       // Otherwise, display the wallet not enabled message.
-      if (methods.applePay === true) {
-        applePayBtn.style.display = 'inline-block';
-        applePayLabel.style.display = 'none' ;
-      }
+//      if (methods.applePay === true) {
+//        applePayBtn.style.display = 'inline-block';
+//        applePayLabel.style.display = 'none' ;
+//      }
       // Only show the button if Masterpass is enabled
       // Otherwise, display the wallet not enabled message.
-      if (methods.masterpass === true) {
-        masterpassBtn.style.display = 'inline-block';
-        masterpassLabel.style.display = 'none';
-      }
+//      if (methods.masterpass === true) {
+//        masterpassBtn.style.display = 'inline-block';
+//        masterpassLabel.style.display = 'none';
+//      }
     },
 
     /*
