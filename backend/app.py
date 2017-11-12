@@ -192,7 +192,7 @@ class Pay(webapp2.RequestHandler):
         self.response.headers['Access-Control-Allow-Origin'] = '*'
         nonce = self.request.POST.get('nonce', None)
         if nonce:
-            result = square_pay.pay(nonce=nonce)
+            result = square_pay.pay(nonce=nonce, 1000)
             self.response.write("<p>Success.</p>") 
         else:
            self.response.write("<p>Fail.</p>") 
