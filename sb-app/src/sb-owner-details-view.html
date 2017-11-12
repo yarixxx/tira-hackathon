@@ -10,72 +10,105 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="../bower_components/iron-icons/device-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-icons/editor-icons.html">
 <link rel="import" href="shared-styles.html">
 
 <link rel="import" href="../bower_components/google-map/google-map.html">
-
-<!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTm_zMPw1hiTxZpp74n588lm0wQh2P5EE&libraries=places"></script-->
 
 <dom-module id="sb-owner-details-view">
   <template>
     <style include="shared-styles">
       :host {
+        background: #fff;
         display: block;
-
-        padding: 10px;
+        font-size: 14px;
+        height: 500px;
       }
+      
+      .map-container {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .map {
+        width: 375px;
+      }
+
       .left-column {
-        min-width: 100px;
+        min-width: 40px;
         margin: 5px;
       }
+
       .right-column {
         margin: 5px;
       }
+
+      .card {
+        box-shadow: none;
+        margin: 0;
+      }
+
       .card .row {
         display: flex;
+      }
+
+      .title {
+        margin-left: 55px;
+      }
+
+      .description {
+        margin-left: 50px;
+      }
+
+      iron-icon {
+        --iron-icon-fill-color: #4CAF50;
       }
     </style>
 
     <iron-ajax
-    auto
-    url="https://my-project-intuit.appspot.com/classes_list?classId={{classId}}"
-    handle-as="json"
-    on-response="handleResponse"></iron-ajax>
+      auto
+      url="https://my-project-intuit.appspot.com/classes_list?classId={{classId}}"
+      handle-as="json"
+      on-response="handleResponse"></iron-ajax>
+
+    <div class="map-container">
+      <img class="map" src="/images/maps.png"/>
+    </div>
 
     <div class="card">
-      <div class="row">
-        <div><h1 style="margin: 5px;">{{response.class.classId}} Class Details</h1></div>
-        <div style="margin: 5px;margin-left: auto;" title="edit">&#x270D;</div>
+      <div class="row title">
+        <h1>{{response.class.title}}</h1>
       </div>
-      <div class="row">
-        <div class="left-column">Date</div>
-        <div class="right-column">{{response.class.date}}</div>
-      </div>
-      <div class="row">
-        <div class="left-column">Title</div>
-        <div class="right-column">{{response.class.title}}</div>
-      </div>
-      <div class="row">
-        <div class="left-column">Description</div>
+      <div class="row description">
         <div class="right-column">{{response.class.description}}</div>
       </div>
       <div class="row">
-        <div class="left-column">Location</div>
-        <div class="right-column">
-            <google-map latitude="37.790" longitude="-122.390"></google-map>
+        <div class="left-column">
+          <iron-icon icon="device:access-time"></iron-icon>
         </div>
+        <div class="right-column">{{response.class.date}}</div>
       </div>
       <div class="row">
-        <div class="left-column">Price</div>
+        <div class="left-column">
+          <iron-icon icon="editor:attach-money"></iron-icon>
+        </div>
         <div class="right-column">${{response.class.price}}</div>
       </div>
       <div class="row"> 
-        <div class="left-column">Attenders:</div>
+        <div class="left-column">
+          <iron-icon icon="social:people"></iron-icon>
+        </div>
         <div class="right-column">
-          <div class="circle">SO</div>
-          <div class="circle">IK</div>
-          <div class="circle">SM</div>
-          <div class="circle">IL</div>
+          <div class="photo-container layout horizontal">
+            <template is="dom-repeat" items="{{response.class.attendees}}">
+              <img src="/images/{{item.image}}"/>
+            </template>
+          </div>
         </div>
       </div>  
     </div>

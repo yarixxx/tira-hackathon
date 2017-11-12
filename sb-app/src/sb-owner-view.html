@@ -67,21 +67,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       iron-icon {
         --iron-icon-fill-color: #4CAF50;
       }
-
-      .photo-container img{
-        border-radius: 100%;
-        height: 30px;
-        width: 30px;
-      }
     </style>
-    <!-- url="https://my-project-intuit.appspot.com/classes_list" -->
     <iron-ajax
         auto
-        url="http://localhost:8081/data/classes-list.json"
+        url="https://my-project-intuit.appspot.com/classes_list"
         handle-as="json"
         on-response="handleResponse"></iron-ajax>
 
-    <template is="dom-repeat" items="{{responce}}">
+    <template is="dom-repeat" items="{{responce.classes_list}}">
         <div class="card">
           <div class="layout horizontal">
             <a class="card-link" name="owner-details-view" href="[[rootPath]]owner-details-view/[[item.classId]]">
