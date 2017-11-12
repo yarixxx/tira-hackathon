@@ -20,15 +20,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles iron-flex iron-flex-alignment">
       :host {
         display: block;
-
+        background-color: #fff; 
         padding: 10px;
+        height: 500px;
       }
     </style>
-    <paper-tabs selected="0">
-      <paper-tab>TAB 1</paper-tab>
-      <paper-tab>TAB 2</paper-tab>
-      <paper-tab>TAB 3</paper-tab>
-    </paper-tabs>
     <h3>Send notification to participants</h3>
     <paper-textarea label="Message" value="{{message}}"></paper-textarea>
     <paper-button raised on-tap="sendNotification">send</paper-button>

@@ -14,6 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/google-chart/google-chart.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="sb-analytics-view">
@@ -57,7 +58,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </div>
         <div>
-              Content 2
+        <google-chart
+            type='area'
+            options='{"vAxis": {"minValue" : 0},
+                  "chartArea": {"width": "80%"},
+                  "legend": {"position": "none"},
+                  "selectionMode": "multiple"}'
+            o123ptions='{"title": "Performance over time", "vAxis": {"minValue": 0}, "animation": {duration: 10000, "startup": true}, "legend": {"position": "top"}, "pointsVisible": true}'
+            cols='[{"label":"Timeline", "type":"string"}, {"label":"Revenue", "type":"number"}]'
+            rows='[["Jan", 975.00],["Feb", 1254.00],["Mar", 1089.00]]'>
+        </google-chart>
         </div>
        </iron-pages>
   </template>
@@ -68,7 +78,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
-          selected: Number,
+          selected: {
+            type: Number,
+            value: 1
+          },
           response: Object
         };
       }
