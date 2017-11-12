@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
@@ -25,12 +26,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <h3>Send notification to participants</h3>
-    <paper-textarea label="Message"></paper-textarea>
-  </template>
+    <paper-textarea label="Message" value="{{message}}"></paper-textarea>
+    <paper-button raised on-tap="sendNotification">send</paper-button>
 
+    <iron-ajax
+        id="AjaxPost"
+        url="https://my-project-intuit.appspot.com/notify"
+        method="POST"
+        on-response="_handleAjaxPostResponse"
+        content-type="application/x-www-form-urlencoded"
+        on-error="_handleAjaxPostError"></iron-ajax>
+  </template>
+  <!--content-type="application/json"-->
+  <!--handle-as="json"-->
   <script>
     class NotificationView extends Polymer.Element {
       static get is() { return 'sb-notification-view'; }
+
+      static get properties() {
+        return {
+          message: String
+        };
+      }
+
+      sendNotification() {
+        this.$.AjaxPost.body = {
+          "message": this.message,
+          "student": "user3",
+          "teacher": "teacher1"
+        };
+        this.$.AjaxPost.generateRequest();
+
+//        console.log(this.message);
+      }
+
+      _handleAjaxPostError(resp) {
+        console.log(resp);
+      }
+
+      _handleAjaxPostError(resp) {
+        console.log(resp);
+      }
     }
 
     window.customElements.define(NotificationView.is, NotificationView);
