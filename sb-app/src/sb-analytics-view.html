@@ -60,10 +60,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
         <div>
         <google-chart
-            type='pie'
-            options='{"title": "Distribution of days in 2001Q1"}'
-            cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
-            rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
+            type='area'
+            options='{"vAxis": {"minValue" : 0},
+                  "chartArea": {"width": "80%"},
+                  "legend": {"position": "none"},
+                  "selectionMode": "multiple"}'
+            o123ptions='{"title": "Performance over time", "vAxis": {"minValue": 0}, "animation": {duration: 10000, "startup": true}, "legend": {"position": "top"}, "pointsVisible": true}'
+            cols='[{"label":"Timeline", "type":"string"}, {"label":"Revenue", "type":"number"}]'
+            rows='[["Jan", 975.00],["Feb", 1254.00],["Mar", 1089.00]]'>
         </google-chart>
         </div>
        </iron-pages>
@@ -77,7 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return {
           selected: {
             type: Number,
-            value: 0
+            value: 1
           },
           response: Object
         };
