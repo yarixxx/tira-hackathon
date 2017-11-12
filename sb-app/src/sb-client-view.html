@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
@@ -40,6 +41,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .card:nth-child(3) {
         background-color: #2f566a;
+      }
+
+      .card:nth-child(4) {
+        background-color: #a81b56;
       }
 
       .card-link {
@@ -74,12 +79,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-radius: 20px;
       }
 
-      .description {
+      .description p {
         font-size: 14px;
+        margin-top: 0; 
       }
 
       iron-icon {
         --iron-icon-fill-color: #4CAF50;
+      }
+
+      paper-button {
+        --paper-button-ink-color: #4285f4;
+        background-color: #4285f4;
+      }
+
+      .price {
+        flex: 1 1 auto;
+        font-weight: bold;
       }
 
       .photo-container img{
@@ -103,19 +119,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <div class="date">{{item.date}} </div>
               <h1>{{item.title}}</h1>
             </a>
-            <div class="icons-container">
+            <!-- <div class="icons-container">
               <a name="owner-details-view" href="[[rootPath]]notification-view">
                 <iron-icon icon="communication:textsms"></iron-icon>
               </a>
-            </div>
+            </div> -->
           </div>
           <a class="description" name="owner-details-view" href="[[rootPath]]owner-details-view/[[item.classId]]">
             <p>{{item.description}}</p>
           </a>
-          <div class="photo-container layout horizontal">
+          <!-- <div class="photo-container layout horizontal">
             <template is="dom-repeat" items="{{item.attendees}}">
               <img src="/images/{{item.image}}"/>
             </template>
+          </div> -->
+          <div class="layout horizontal center">
+            <div class="price">${{item.price}}</div>
+            <a name="customer-view" href="[[rootPath]]customer-view">
+              <paper-button raised>PAY</paper-button>
+            </a>
+            
           </div>
         </div>
       </template>
