@@ -1,1 +1,99 @@
-[  {    "classId": "class1",    "title": "Yoga class for beginners",    "date": "1510520826",    "description": "Group class for beginners",    "location":{      "lat": 37.428893,      "lon": -122.097782    },    "price": "10",    "attendees":[      {        "customerId": "customerL",        "firstName": "Ihor",        "lastName": "Lutskyy"      },{        "customerId": "customerK",        "firstName": "Iaroslav",        "lastName": "Karandashev"      }    ]  },{    "classId": "class2",    "title": "Advanced Yoga class",    "date": "1510607226",    "description": "Advanced Yoga Group class",    "location": {      "lat": 37.428893,      "lon": -122.097782    },    "price": "20",    "attendees": [      {        "customerId": "customerM",        "firstName": "Stas",        "lastName": "Makarenko"      },{        "customerId": "customerK",        "firstName": "Iaroslav",        "lastName": "Karandashev"      }    ]  },{    "classId": "class3",    "title": "Yoga class for beginners",    "date": "1511125626",    "description": "Group class for beginners",    "location":{      "lat": 37.428893,      "lon": -122.097782    },    "price": "10",    "attendees":[      {        "customerId": "customerO",        "firstName": "Sergiy",        "lastName": "Osypov"      },      {        "customerId": "customerL",        "firstName": "Ihor",        "lastName": "Lutskyy"      }    ]  }]
+[{
+  "classId": "class3",
+  "title": "Kids Yoga",
+  "date": "Today 4:45pm",
+  "description": "10 min of intro and warm-up 20 min of running",
+  "location":{
+    "lat": 37.428893,
+    "lon": -122.097782
+  },
+  "price": "10",
+  "attendees":[
+    {
+      "image": "photo_1.jpg",
+      "firstName": "Sergiy",
+      "lastName": "Osypov"
+    },
+    {
+      "image": "photo_2.jpg",
+      "firstName": "Ihor",
+      "lastName": "Lutskyy"
+    },
+    {
+      "image": "photo_3.jpg",
+      "firstName": "Stas",
+      "lastName": "Makarenko"
+    },
+    {
+      "image": "photo_4.jpg",
+      "firstName": "Iaroslav",
+      "lastName": "Karandashev"
+    }
+  ]
+  
+},{
+    "classId": "class1",
+    "title": "Yoga class for beginners",
+    "date": "Today 3:00pm",
+    "description": "Group class for beginners. 20 min workout, 20 min yoga free time for chit-chat",
+    "location":{
+      "lat": 37.428893,
+      "lon": -122.097782
+    },
+    "price": "10",
+    "attendees":[
+      {
+        "image": "photo_3.jpg",
+        "firstName": "Ihor",
+        "lastName": "Lutskyy"
+      },{
+        "image": "photo_2.jpg",
+        "firstName": "Iaroslav",
+        "lastName": "Karandashev"
+      }
+    ]
+  },{
+    "classId": "class2",
+    "title": "Advanced Yoga Class",
+    "date": "Tommorow 6:00pm",
+    "description": "Advanced Yoga Group class. 10 min of intro and warm-up 30 min of running",
+    "location": {
+      "lat": 37.428893,
+      "lon": -122.097782
+    },
+    "price": "20",
+    "attendees": [
+      {
+        "image": "photo.jpg",
+        "firstName": "Stas",
+        "lastName": "Makarenko"
+      },{
+        "image": "photo_1.jpg",
+        "firstName": "Iaroslav",
+        "lastName": "Karandashev"
+      }
+    ]
+  },{
+    "classId": "class3",
+    "title": "Kids Yoga",
+    "date": "Tommorow 6:00pm",
+    "description": "",
+    "location":{
+      "lat": 37.428893,
+      "lon": -122.097782
+    },
+    "price": "10",
+    "attendees":[
+      {
+        "image": "photo_3.jpg",
+        "firstName": "Sergiy",
+        "lastName": "Osypov"
+      },
+      {
+        "image": "photo_4.jpg",
+        "firstName": "Ihor",
+        "lastName": "Lutskyy"
+      }
+    ]
+  }
+]
