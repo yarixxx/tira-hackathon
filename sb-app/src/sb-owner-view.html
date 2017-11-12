@@ -48,7 +48,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <template is="dom-repeat" items="{{responce.classes_list}}">
         <div class="card">
           <div class="layout horizontal">
-            <a class="card-link" name="owner-details-view" href="[[rootPath]]owner-details-view">
+            <a class="card-link" name="owner-details-view" href="[[rootPath]]owner-details-view/[[item.classId]]">
               <h1>{{item.title}}</h1>
             </a>
             <div class="icons-container">
@@ -76,17 +76,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
-          responce: Object,
-          isNoteViewOpened: Boolean
+          responce: Object
         };
       }
 
       handleResponse(data) {
         this.responce = data.detail.response;
-      }
-
-      openNoteView() {
-        isNoteViewOpened = true;
       }
     }
 
