@@ -24,7 +24,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+
+      .card {
+        margin: 20px;
+      }
     </style>
+
+  <iron-ajax
+    auto
+    url="https://my-project-intuit.appspot.com/last_payments"
+    handle-as="json"
+    on-response="handleResponse"></iron-ajax>
+
       <paper-tabs selected="{{selected}}">
         <paper-tab>Recent payments</paper-tab>
         <paper-tab>Analytics</paper-tab>
@@ -32,7 +43,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <iron-pages selected="{{selected}}">
         <div>
-              Content 1
+          <template is="dom-repeat" items="{{response.transactions}}">
+            <div class="card">
+              <div class="layout">
+
+                <div>{{item.id}}</div>
+                <div>{{item.tenders.0.amount_money.currency}} {{item.tenders.0.amount_money.amount}}</div>
+                <div>{{item.tenders.0.card_details.card.card_brand}} **** **** **** {{item.tenders.0.card_details.card.last_4}}</div>
+              </div>
+            </div>
+          </template>
+
         </div>
         <div>
               Content 2
@@ -43,13 +64,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     class AnalyticsView extends Polymer.Element {
       static get is() { return 'sb-analytics-view'; }
 
+
       static get properties() {
         return {
-          selected: Number
+          selected: Number,
+          response: Object
         };
+      }
+
+      handleResponse(data) {
+        this.response = data.detail.response.payments[0];
+        console.log('resp', this.response);
       }
     }
 
     window.customElements.define(AnalyticsView.is, AnalyticsView);
+
   </script>
 </dom-module>
