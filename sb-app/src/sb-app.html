@@ -25,6 +25,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="sb-owner-view.html">
 <link rel="lazy-import" href="sb-owner-details-view.html">
 <link rel="lazy-import" href="sb-owner-details-create-view.html">
+<link rel="lazy-import" href="sb-client-view.html">
 <link rel="lazy-import" href="sb-customer-view.html">
 <link rel="lazy-import" href="sb-notification-view.html">
 <link rel="lazy-import" href="sb-analytics-view.html">
@@ -89,8 +90,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="owner-view" href="[[rootPath]]owner-view">Owner view</a>
-          <a name="customer-view" href="[[rootPath]]customer-view">Customer view</a>
-          <a name="analytics-view" href="[[rootPath]]analytics-view">Statistic</a>
+          <a name="customer-view" href="[[rootPath]]customer-view">Payment view</a>
+          <a name="client-view" href="[[rootPath]]client-view">Client view</a>
+          <a name="analytics-view" href="[[rootPath]]analytics-view">Analytics</a>
           <a>Settings</a>
         </iron-selector>
       </app-drawer>
@@ -112,6 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <sb-owner-view name="owner-view"></sb-owner-view>
           <sb-customer-view name="customer-view"></sb-customer-view>
+          <sb-client-view name="client-view"></sb-client-view>
           <sb-owner-details-view name="owner-details-view"></sb-owner-details-view>
           <sb-owner-details-create-view name="owner-details-create-view"></sb-owner-details-create-view>
           <sb-notification-view name="notification-view"></sb-notification-view>

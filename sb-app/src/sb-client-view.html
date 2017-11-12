@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="sb-owner-view">
+<dom-module id="sb-client-view">
   <template>
     <style include="shared-styles iron-flex iron-flex-alignment">
       :host {
@@ -113,8 +113,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class OwnerView extends Polymer.Element {
-      static get is() { return 'sb-owner-view'; }
+    class ClientView extends Polymer.Element {
+      static get is() { return 'sb-client-view'; }
 
       static get properties() {
         return {
@@ -127,6 +127,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     }
 
-    window.customElements.define(OwnerView.is, OwnerView);
+    window.customElements.define(ClientView.is, ClientView);
   </script>
 </dom-module>
