@@ -1,6 +1,30 @@
 ﻿<script type="text/javascript" src="https://js.squareup.com/v2/paymentform"> </script>
 <script type="text/javascript" src="sqpaymentform.js"></script>
 <link rel="stylesheet" type="text/css" href="sqpaymentform.css">
+<style>
+  body {
+    font-family: 'Roboto', 'Noto', sans-serif;
+  }
+
+  #sq-ccbox {
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-credit-card {
+    min-width: unset;
+    border-radius: 3px;
+    padding: 0.7em 0.57em;
+    line-height: 24px;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  .button-credit-card img {
+    width: 20px;
+  }
+</style>
 
 <div id="sq-ccbox">
   <!--
@@ -8,7 +32,6 @@
     the URL you want to POST the nonce to (for example, "/process-card")
   -->
   <form id="nonce-form" novalidate action="https://my-project-intuit.appspot.com/pay" method="post">
-    Pay with a Credit Card
     <table>
     <tbody>
       <tr>
@@ -28,9 +51,9 @@
         <td><div id="sq-postal-code"></div></td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="2" align="center">
           <button id="sq-creditcard" class="button-credit-card" onclick="requestCardNonce(event)">
-            Pay with card
+            <img src="images/square.png"> Pay with square
           </button>
         </td>
       </tr>
