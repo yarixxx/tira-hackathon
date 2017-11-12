@@ -1,0 +1,132 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="sb-client-view">
+  <template>
+    <style include="shared-styles iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .card-link {
+        flex: 1 1 auto;
+      }
+
+      a {
+        text-decoration: none;
+        color: unset;
+        cursor: pointer;
+      }
+
+      .date {
+        font-size: 14px;
+      }
+      
+      h1 {
+        font-size: 16px;
+      }
+
+      .icons-container {
+        width: 27px;
+      }
+      
+      .red-plus {
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        background-color: red; 
+        color: white; 
+        border-radius: 20px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+
+      iron-icon {
+        --iron-icon-fill-color: #4CAF50;
+      }
+
+      .photo-container img{
+        border-radius: 100%;
+        height: 30px;
+        width: 30px;
+      }
+    </style>
+    <!-- url="https://my-project-intuit.appspot.com/classes_list" -->
+    <iron-ajax
+        auto
+        url="https://my-project-intuit.appspot.com/classes_list"
+        handle-as="json"
+        on-response="handleResponse"></iron-ajax>
+
+    <template is="dom-repeat" items="{{responce.classes_list}}">
+        <div class="card">
+          <div class="layout horizontal">
+            <a class="card-link" name="owner-details-view" href="[[rootPath]]owner-details-view/[[item.classId]]">
+              <div class="date">{{item.date}} </div>
+              <h1>{{item.title}}</h1>
+            </a>
+            <div class="icons-container">
+              <a name="owner-details-view" href="[[rootPath]]notification-view">
+                <iron-icon icon="communication:textsms"></iron-icon>
+              </a>
+            </div>
+          </div>
+          <a class="description" name="owner-details-view" href="[[rootPath]]owner-details-view/[[item.classId]]">
+            <p>{{item.description}}</p>
+          </a>
+          <div class="photo-container layout horizontal">
+            <template is="dom-repeat" items="{{item.attendees}}">
+              <img src="/images/{{item.image}}"/>
+            </template>
+          </div>
+        </div>
+      </a>
+    </template>
+    <div class="red-plus">
+      <a name="owner-details-create-view" href="[[rootPath]]owner-details-create-view">
+        <paper-icon-button icon="add"></paper-icon-button>
+      </a>  
+    </div>
+  </template>
+
+  <script>
+    class ClientView extends Polymer.Element {
+      static get is() { return 'sb-client-view'; }
+
+      static get properties() {
+        return {
+          responce: Object
+        };
+      }
+
+      handleResponse(data) {
+        this.responce = data.detail.response;
+      }
+    }
+
+    window.customElements.define(ClientView.is, ClientView);
+  </script>
+</dom-module>
