@@ -188,11 +188,11 @@ class LastPayments(webapp2.RequestHandler):
 class Pay(webapp2.RequestHandler):
 
     def post(self):
-        self.response.headers['Content-Type'] = 'application/json'
+        self.response.headers['Content-Type'] = 'text/html'
         self.response.headers['Access-Control-Allow-Origin'] = '*'
         nonce = self.request.POST.get('nonce', None)
         if nonce:
-            result = square_pay.pay(nonce=nonce)
+            result = square_pay.pay(nonce=nonce, 1000)
             self.response.write("<p>Success.</p>") 
         else:
            self.response.write("<p>Fail.</p>") 
