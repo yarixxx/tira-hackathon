@@ -50,7 +50,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <div class="layout">
 
                 <div><iron-timeago datetime="{{item.created_at}}"></iron-timeago></div>
-                <div>${{item.tenders.0.amount_money.amount}}.00</div>
+                <div style="color: green; font-weight: bold;">${{item.tenders.0.amount_money.amount}}.00</div>
                 <div>{{item.tenders.0.card_details.card.card_brand}} **** **** **** {{item.tenders.0.card_details.card.last_4}}</div>
               </div>
             </div>
