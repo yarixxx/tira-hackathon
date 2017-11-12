@@ -9,7 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
@@ -33,8 +34,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .right-column {
         margin: 5px;
       }
-      .card .row {
-        display: flex;
+      .card {
+        /* display: flex; */
+
+        height: 450px;
+      }
+      paper-button {
+      --paper-button-ink-color: #4285f4;
+        background-color: #4285f4;
+        color: #fff;
+        float: right;
       }
     </style>
 
@@ -49,35 +58,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div><h1 style="margin: 5px;">Add Class Details</h1></div>
       </div>
       <div class="row">
-        <div class="left-column">Date</div>
-        <div class="right-column"><input type="date" name="date"></div>
+        <paper-input label="Date" value=""></paper-input>
       </div>
       <div class="row">
-        <div class="left-column">Title</div>
-        <div class="right-column"><input type="text" name="title"></div>
+        <paper-input label="Title" value=""></paper-input>
       </div>
       <div class="row">
-        <div class="left-column">Description</div>
-        <div class="right-column"><input type="text" name="description"></div>
+        <paper-input label="Location" value=""></paper-input>
       </div>
       <div class="row">
-        <div class="left-column">Location</div>
-        <div class="right-column">
-            <input type="text" name="location">
-        </div>
+        <paper-input label="Description" value=""></paper-input>
       </div>
       <div class="row">
-        <div class="left-column">Price</div>
-        <div class="right-column"><input type="number" name="price"></div>
-      </div>
-      <div class="row"> 
-        <div class="left-column">Attenders:</div>
-        <div class="right-column">
-          <input type="text" name="attenders">
-        </div>
-      </div>  
+        <paper-input label="Price" value=""></paper-input>
+      </div> 
       <div class="row">
-        <paper-icon-button icon="save"></paper-icon-button>
+        <a href="[[rootPath]]owner-view">
+          <paper-button>SAVE</paper-button>
+        </a>
       </div>
     </div>
 

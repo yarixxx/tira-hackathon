@@ -24,10 +24,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
         height: 500px;
       }
+
+      paper-button {
+        --paper-button-ink-color: #4285f4;
+        background-color: #4285f4;
+        color: #fff;
+        float: right;
+      }
+
+      .success-message {
+        margin-top: 10px;
+      }
     </style>
     <h3>Send notification to participants</h3>
-    <paper-textarea label="Message" value="{{message}}"></paper-textarea>
-    <paper-button raised on-tap="sendNotification">send</paper-button>
+      <paper-textarea label="Message" value="{{message}}"></paper-textarea>
+      <paper-button raised on-tap="sendNotification">send</paper-button>
+
+    <div class="success-message" hidden$="{{!isMessageSent}}">
+      Message sent!
+    </div>
 
     <iron-ajax
         id="AjaxPost"
@@ -44,7 +59,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
-          message: String
+          message: String,
+          isMessageSent: {
+            type: Boolean,
+            value: false
+          }
         };
       }
 
@@ -59,8 +78,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //        console.log(this.message);
       }
 
-      _handleAjaxPostError(resp) {
+      _handleAjaxPostResponse(resp) {
         console.log(resp);
+        this.isMessageSent = true;
       }
 
       _handleAjaxPostError(resp) {
