@@ -124,7 +124,7 @@ var paymentForm = new SqPaymentForm({
       // POST the nonce form to the payment processing page
       document.getElementById('nonce-form').submit();
 
-      window.location.href = '/owner-view';
+//      window.location.href = '/owner-view';
     },
 
     /*
