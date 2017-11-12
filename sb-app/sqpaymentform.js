@@ -48,15 +48,15 @@ var paymentForm = new SqPaymentForm({
   // Initialize the credit card placeholders
   cardNumber: {
     elementId: 'sq-card-number',
-    placeholder: '•••• •••• •••• ••••'
+    placeholder: '4929 7399 8783 1305'
   },
   cvv: {
     elementId: 'sq-cvv',
-    placeholder: 'CVV'
+    placeholder: '126'
   },
   expirationDate: {
     elementId: 'sq-expiration-date',
-    placeholder: 'MM/YY'
+    placeholder: '12/21'
   },
   postalCode: {
     elementId: 'sq-postal-code'
@@ -119,11 +119,10 @@ var paymentForm = new SqPaymentForm({
       // alert('Nonce received: ' + nonce); /* FOR TESTING ONLY */
 
       // Assign the nonce value to the hidden form field
-      document.getElementById('card-nonce').value = nonce.message;
+      document.getElementById('card-nonce').value = nonce;
 
       // POST the nonce form to the payment processing page
       document.getElementById('nonce-form').submit();
-
     },
 
     /*
