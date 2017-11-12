@@ -27,6 +27,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
 
+      paper-tab {
+        text-transform: uppercase;
+      }
+
       .card {
         margin: 20px;
       }
@@ -50,7 +54,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <div class="layout">
 
                 <div><iron-timeago datetime="{{item.created_at}}"></iron-timeago></div>
-                <div>{{item.tenders.0.amount_money.currency}} {{item.tenders.0.amount_money.amount}}</div>
+                <div style="color: green; font-weight: bold;">${{item.tenders.0.amount_money.amount}}.00</div>
                 <div>{{item.tenders.0.card_details.card.card_brand}} **** **** **** {{item.tenders.0.card_details.card.last_4}}</div>
               </div>
             </div>
@@ -64,10 +68,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             options='{"vAxis": {"minValue" : 0},
                   "chartArea": {"width": "80%"},
                   "legend": {"position": "none"},
-                  "selectionMode": "multiple"}'
-            o123ptions='{"title": "Performance over time", "vAxis": {"minValue": 0}, "animation": {duration: 10000, "startup": true}, "legend": {"position": "top"}, "pointsVisible": true}'
+                  "selectionMode": "multiple",
+                  "animation": {"duration": 500, "startup": true},
+                  "title": "Revenue"
+                  }'
             cols='[{"label":"Timeline", "type":"string"}, {"label":"Revenue", "type":"number"}]'
             rows='[["Jan", 975.00],["Feb", 1254.00],["Mar", 1089.00]]'>
+        </google-chart>
+
+        <google-chart
+            type='pie'
+            options='{"vAxis": {"minValue" : 0},
+                  "chartArea": {"width": "80%"},
+                  "legend": {"position": "bottom"},
+                  "selectionMode": "multiple",
+                  "animation": {"duration": 500, "startup": true},
+                  "title": "New vs Returning"
+                  }'
+            cols='[{"label":"", "type":"string"}, {"label":"", "type":"number"}]'
+            rows='[["Returning", 57],["New", 43]]'>
+        </google-chart>
+
+        <google-chart
+            type='bar'
+            options='{"vAxis": {"minValue" : 0},
+                  "chartArea": {"width": "80%"},
+                  "legend": {"position": "bottom"},
+                  "selectionMode": "multiple",
+                  "animation": {"duration": 500, "startup": true},
+                  "title": "Demographics"
+                  }'
+            cols='[{"label":"", "type":"string"}, {"label":"", "type":"number"}]'
+            rows='[["20-30", 35],["30-45", 45],["45-55", 15],["55+", 5]]'>
         </google-chart>
         </div>
        </iron-pages>
