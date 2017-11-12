@@ -12,7 +12,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTm_zMPw1hiTxZpp74n588lm0wQh2P5EE&libraries=places"></script>
+<link rel="import" href="../bower_components/google-map/google-map.html">
+
+<!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTm_zMPw1hiTxZpp74n588lm0wQh2P5EE&libraries=places"></script-->
 
 <dom-module id="sb-owner-details-view">
   <template>
@@ -34,43 +36,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+    <iron-ajax
+    auto
+    url="https://my-project-intuit.appspot.com/classes_list?classId={{classId}}"
+    handle-as="json"
+    on-response="handleResponse"></iron-ajax>
+
     <div class="card">
       <div class="row">
-        <div><h1 style="margin: 5px;">Class Details</h1></div>
+        <div><h1 style="margin: 5px;">{{response.class.classId}} Class Details</h1></div>
         <div style="margin: 5px;margin-left: auto;">edit here</div>
       </div>
       <div class="row">
+        <div class="left-column">Date</div>
+        <div class="right-column">{{response.class.date}}</div>
+      </div>
+      <div class="row">
         <div class="left-column">Title</div>
-        <div class="right-column">Yoga class</div>
+        <div class="right-column">{{response.class.title}}</div>
       </div>
       <div class="row">
         <div class="left-column">Description</div>
-        <div class="right-column">Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</div>
+        <div class="right-column">{{response.class.description}}</div>
       </div>
       <div class="row">
         <div class="left-column">Location</div>
         <div class="right-column">
-          <google-map/>
-          <template is="dom-bind">
-            <google-map-search map="[[map]]" query="Pizza" results="{{results}}">
-            </google-map-search>
-            <google-map map="{{map}}" latitude="37.779"
-                        longitude="-122.3892">
-              <template is="dom-repeat" items="{{results}}" as="marker">
-                <google-map-marker latitude="{{marker.latitude}}"
-                                   longitude="{{marker.longitude}}">
-                  <h2>{{marker.name}}</h2>
-                  <span>{{marker.formatted_address}}</span>
-                </google-map-marker>
-              </template>
-            </google-map>
-          </template>          
-
+            <google-map latitude="37.790" longitude="-122.390"></google-map>
         </div>
       </div>
       <div class="row">
         <div class="left-column">Price</div>
-        <div class="right-column">$10</div>
+        <div class="right-column">{{response.class.price}}</div>
       </div>
       <div class="row"> 
         <div class="left-column">Attenders:</div>
@@ -83,21 +80,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>  
     </div>
 
-    <iron-ajax
-        auto
-        url="https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
-        params='{"part":"snippet", "q":"polymer", "key": "YOUTUBE_API_KEY", "type": "video"}'
-        handle-as="json"
-        on-response="handleResponse"
-        debounce-duration="300"></iron-ajax>
   </template>
 
   <script>
     class OwnerDetailsView extends Polymer.Element {
       static get is() { return 'sb-owner-details-view'; }
 
-      handleResponse(resp) {
-        console.log(resp);
+      static get properties() {
+        return {
+          response: Object
+        };
+      }
+
+      constructor() {
+        super();
+        const pathname = window.location.pathname;
+        this.classId = pathname.substring(1 + pathname.lastIndexOf('/'));
+        console.log('pathname', this.classId);
+      }
+
+      handleResponse(data) {
+        console.log('data', data.detail.response);
+        this.response = data.detail.response;
       }
     }
 
