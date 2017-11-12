@@ -165,7 +165,7 @@ class Pay(webapp2.RequestHandler):
         nonce = self.request.POST.get('nonce', None)
         if nonce:
             result = square_pay.pay(nonce=nonce)
-            self.response.write(json.dumps({'message': result})) 
+            self.response.write(json.dumps({'message': 'Payment successful!', 'response': result})) 
         else:
            self.response.write(json.dumps({'message': 'Where is noance?'})) 
 
