@@ -10,15 +10,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="sb-owner-view">
   <template>
-    <style include="shared-styles">
+    <style include="shared-styles iron-flex iron-flex-alignment">
       :host {
         display: block;
 
         padding: 10px;
+      }
+
+      .card-link {
+        flex: 1 1 auto;
+      }
+
+      a {
+        text-decoration: none;
+        color: unset;
+      }
+
+      .icons-container {
+        width: 53px;
       }
     </style>
 
@@ -29,11 +46,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         on-response="handleResponse"></iron-ajax>
 
     <template is="dom-repeat" items="{{responce.classes_list}}">
-      <div class="card">
-        <h1>{{item.title}}</h1>
-        <p>{{item.description}}</p>
-        <a name="owner-details-view" href="[[rootPath]]owner-details-view">Owner Details view</a>
-      </div>
+        <div class="card">
+          <div class="layout horizontal">
+            <a class="card-link" name="owner-details-view" href="[[rootPath]]owner-details-view">
+              <h1>{{item.title}}</h1>
+            </a>
+            <div class="icons-container">
+              <iron-icon icon="image:edit"></iron-icon>
+              <a name="owner-details-view" href="[[rootPath]]notification-view">
+                <iron-icon icon="communication:textsms"></iron-icon>
+              </a>
+            </div>
+          </div>
+          <a name="owner-details-view" href="[[rootPath]]owner-details-view">
+            <p>{{item.description}}</p>
+          </a>
+        </div>
+      </a>
+    </template>
+
+    <template is="dom-repeat" items="{{responce.classes_list}}">
+
     </template>
   </template>
 
@@ -43,12 +76,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
-          responce: Object
+          responce: Object,
+          isNoteViewOpened: Boolean
         };
       }
 
       handleResponse(data) {
         this.responce = data.detail.response;
+      }
+
+      openNoteView() {
+        isNoteViewOpened = true;
       }
     }
 
