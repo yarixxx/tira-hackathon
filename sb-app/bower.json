@@ -25,7 +25,8 @@
     "paper-tabs": "PolymerElements/paper-tabs#^2.0.0",
     "polymer-filters": "polymer-filters#0.2.1",
     "polymer-expressions": "polymer-expressions#0.5.6",
-    "iron-time": "cloudily/iron-time#^0.1.0"
+    "iron-time": "cloudily/iron-time#^0.1.0",
+    "iron-timeago": "^1.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"
