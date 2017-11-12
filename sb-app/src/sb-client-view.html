@@ -28,6 +28,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      
+      .card {
+        background-color: #277584;
+        color: #fff;
+      }
+
+      .card:nth-child(2) {
+        background-color: #852269;
+      }
+
+      .card:nth-child(3) {
+        background-color: #2f566a;
+      }
 
       .card-link {
         flex: 1 1 auto;
@@ -45,6 +58,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       h1 {
         font-size: 16px;
+        color: #fff;
       }
 
       .icons-container {
@@ -81,7 +95,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         handle-as="json"
         on-response="handleResponse"></iron-ajax>
 
-    <template is="dom-repeat" items="{{responce.classes_list}}">
+    <div class="layout vertical-reverse">
+      <template is="dom-repeat" items="{{responce.classes_list}}">
         <div class="card">
           <div class="layout horizontal">
             <a class="card-link" name="owner-details-view" href="[[rootPath]]owner-details-view/[[item.classId]]">
@@ -103,8 +118,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </template>
           </div>
         </div>
-      </a>
-    </template>
+      </template>
+    </div>
     <div class="red-plus">
       <a name="owner-details-create-view" href="[[rootPath]]owner-details-create-view">
         <paper-icon-button icon="add"></paper-icon-button>
